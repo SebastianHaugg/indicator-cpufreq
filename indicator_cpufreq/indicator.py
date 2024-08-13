@@ -34,7 +34,7 @@ from gettext import gettext as _
 
 def readable_frequency(f):
 	# temp hack for properly displaying intel turbo mode (actual freq + 1000kHz)
-	label = _("%s GHz") % locale.format(_("%.2f"), f / 1.0e6)
+	label = _("%s GHz") % locale.format_string(_("%.2f"), f / 1.0e6)
 	if f % 10000 != 0:
 		label = label + " " + _("(turbo mode)")
 	return label
@@ -153,6 +153,7 @@ class MyIndicator(object):
 		pass
 
 if __name__ == "__main__":
+	locale.setlocale(locale.LC_ALL, '')
 	ind = MyIndicator()
 	Gtk.main()
 
